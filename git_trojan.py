@@ -51,7 +51,7 @@ def get_trojan_config():
     print(type(config_json))
     decoded_json = base64.b64decode(config_json)
     print(type(decoded_json))
-    decoded_json = str(decoded_json)
+    decoded_json = bytes.decode(decoded_json)
     print(type(decoded_json))
     print(decoded_json)
     config = json.loads(decoded_json)
