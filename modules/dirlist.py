@@ -1,6 +1,8 @@
 import os
 
-def run(**args):
+
+print("DIRLIST WAS IMPORTED")
+def run():
 
     print("In module dirlist")
     files = os.listdir(".")
