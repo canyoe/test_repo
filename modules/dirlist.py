@@ -1,7 +1,7 @@
 import os
 
 
-def run1():
+def run(*args, **kwargs):
 
     print("In module dirlist")
     files = os.listdir(".")

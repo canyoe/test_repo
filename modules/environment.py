@@ -3,7 +3,7 @@ import os
 #import dirlist.py
 
 
-def run1():
+def run(*args, **kwargs):
 
     print("In module environment")
     # thatsldgdl
