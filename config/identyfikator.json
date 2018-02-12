@@ -1,8 +1,4 @@
 [
-  {
-    "module" : "dirlister"
-  },
-  {
-    "module" : "environment"
-  }
+  "dirlister",
+  "environment"
 ]

