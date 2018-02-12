@@ -5,6 +5,6 @@ def run(*args, **kwargs):
 
     print("In module dirlist")
     files = os.listdir(".")
-    print(files)
+    #print(files)
     return str(files)
 

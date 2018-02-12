@@ -1,6 +1,9 @@
 [
   {
-    "module" : "dirlist"
+    "module" : "test001"
+  },
+  {
+    "module" : "dirlist1"
   },
   {
     "module" : "environment"
